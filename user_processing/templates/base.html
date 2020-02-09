@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    {% block head %}
+        <title>{% block title %} {% endblock title %}- TStech</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="shortcut icon" href="/static/img/favicon.ico">
+    </head>
+    {% endblock head %}
+
+    <body>
+
+        <div class="container">
+            <div class="row">
+            {% if message %}
+                <div class="col"></div>
+                <div class="col-10">
+                    <ul id="flashes">
+                        <li style="color: darkred;">{{ message }}</li>
+                    </ul>
+                </div>
+                <div class="col"></div>
+            {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="col"></div>
+
+            {% block content %}{% endblock content %}
+                <div class="col"></div>
+
+            </div>
+
+            {% block footer %}{% endblock footer %}
+
+        </div>
+        {% block javascript %}
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+        {% endblock javascript %}
+    </body>
+</html>
