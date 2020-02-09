@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% block title %}Submit user data {% endblock title %}
+{% block content %}
+<div class="col-10">
+<form id="main_form" method="POST" role="form" class="admin-form form-horizontal" enctype="application/x-www-form-urlencoded">
+    <div class="well col-md-12">
+        <legend class="the-legend">Submit user data</legend>
+        <div class="form-group">
+            <label for="name" class="col-md-2 control-label">Name</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Please enter a name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-md-2 control-label">Age</label>
+            <div class="col-md-10">
+                <input type="number" class="form-control" id="age" name="age" placeholder="Select age" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city" class="col-md-2 control-label">City</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="city" name="city" placeholder="Please enter a city name" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12 submit-row">
+            <div class="col-md-offset-7">
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+{% endblock content %}
+{% block javascript %}
+{{ super() }}
+<script type="text/javascript">
+
+    $("#main_form").validate({
+        submitHandler: function(form) {
+            $("#flashes").hide();
+            var submit_button = $("[type=submit]");
+            submit_button.attr("value", "Your request is processing");
+            submit_button.attr("disabled", true);
+            form.submit();
+            $(".form-control").each(function(){
+                $(this).attr("disabled", true);
+            });
+        }
+    });
+</script>
+{% endblock javascript %}
