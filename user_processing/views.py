@@ -1,4 +1,4 @@
-import time
+import asyncio
 
 from aiohttp import web
 from aiohttp_jinja2 import render_template
@@ -47,7 +47,7 @@ class UserHandler(object):
             await conn.execute("commit")
 
         # Sleep for 10 seconds
-        time.sleep(10)
+        await asyncio.sleep(10)
 
         # Render form with success message
         context = {"message":
